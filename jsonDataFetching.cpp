@@ -16,7 +16,7 @@ std::map<std::string, bool> for_bools;
 std::map<std::string, std::string> for_strings;
 
 
-void sort_values(Json::Value& obj,std::string name = ""); // sorting values by its types
+void sort_values(Json::Value& obj,std::string name = ""); // sorting values by it types
 void Print_maps();
 
 
