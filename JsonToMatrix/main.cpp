@@ -10,7 +10,7 @@
 
 int main()
 {
-    std::ifstream file("matrix.json",std::ifstream::binary);
+    std::ifstream file("matrix2.json",std::ifstream::binary);
 
     if(!file.is_open()){
         std::cerr << "Failed to open file" << std::endl;
@@ -28,9 +28,27 @@ int main()
         return 1;
     }
 
+    Json::Value jso = jsonObject;
+    int l = 0;
+    /*while(jso.isArray())
+    {
+        std::cout << "size" << l << " - " << jso.size() << std::endl;
+        ++l;
+        jso = jso[0];
+    }*/
+    
+    
+    NDimensionalMatrix<int,4,1,1,4> Matrix;
+    Matrix.print();
 
-    auto matrix = createMatrixFromJsonObject<int>(jsonObject);
 
-    std::cout << "Compiled successfuly" << std::endl;
+    Matrix.fillMatrixFromJson(jsonObject);
+    std::cout << "After filling" << std::endl << std::endl << std::endl;
+
+    Matrix.print();
+    std::cout <<  "Matrix[2][0][0][1] = " << Matrix[2][0][0][1] << std::endl;
+    std::cout <<  "Matrix[0][0][0][1] = " << Matrix[0][0][0][1] << std::endl;
+
+
     return 0;
 }
